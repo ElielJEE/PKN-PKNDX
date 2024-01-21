@@ -14,7 +14,7 @@ export default function GetPokemons() {
       }
     };
     getPokemons(offset);
-  }, [offset]);
+  }, [offset, limit]);
 
   return {
     pokemons,
