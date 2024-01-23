@@ -10,7 +10,9 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
-  
+  background-color:  #db3b3b  ;
+  padding: 1rem 0 2rem 0;
+
   & .page-title {
     font-family: $title-font;
     font-size: 4rem;
@@ -18,18 +20,18 @@
 
   & .searcher-container {
     display: flex;
-    box-shadow: 0px 0px 20px 0px #00000088;
+    box-shadow: 0 3px 15px #00000088;
     border-radius: 5px;
 
     & .icon-searcher__container {
       display: flex;
-      background-color: #3f4141;
+      background-color: #1a1b1b ;
       padding: 10px;
       border-end-start-radius: 5px;
       border-start-start-radius: 5px;
 
       & i {
-        color:#d2d2d2;
+        color:#eff3ff;
       }
     }
 
@@ -37,11 +39,11 @@
       border-end-end-radius: 5px;
       border-start-end-radius: 5px;
       outline: none;
-      border: solid 1px #3f4141;
+      border: solid 1px #1a1b1b ;
       padding: 0 5px;
       width: 400px;
-      background-color:#d2d2d2;
-      color: #3f4141;
+      background-color:#eff3ff;
+      color: #1a1b1b ;
     }
   }
 }
@@ -55,6 +57,7 @@
       1fr
     )
   );
-  gap: 16px;
+  gap: 30px;
   justify-items: center;
+  padding: 0 3rem;
 }

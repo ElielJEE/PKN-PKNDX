@@ -1,5 +1,5 @@
 .pokecard-container {
-  background-color: #1a1b1b;
+  background-color: #1a1b1b ;
   width: 185px;
   height: 300px;
   border-radius: 20px;
@@ -7,7 +7,8 @@
   transition: transform 1.5s;
   transform-style: preserve-3d;
   position: relative;
-
+  z-index: 10;
+  
   &:hover {
     transform: rotateY(0.5turn);
     cursor: pointer;
@@ -33,7 +34,7 @@
   right: 0;
   bottom: 0;
   backface-visibility: hidden;
-
+  
   & .loading-img {
     width: 70%;
   }
@@ -90,6 +91,7 @@
   transform: rotateY(0.5turn);
   background-color: #3f4141;
   border: none;
+  
 
   & .pokecard-stats__name {
     font-weight: bold;
@@ -100,6 +102,10 @@
     width: 70%;
     height: 8px;
     margin-bottom: 15px;
+  }
+
+  & .pokecard-back__details {
+    font-size: 0.8rem;
   }
 }
 

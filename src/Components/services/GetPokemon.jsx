@@ -5,8 +5,6 @@ export default function GetPokemon(params) {
   const [image, setImage] = useState('')
   const [types, setTypes] = useState([])
   const [stats, setStats] = useState([])
-  const [cardClass, setCardclass] = useState('d-none')
-  const [loadClass, setLoadclass] = useState('')
 
   useEffect(() => {
     const getPokemon = async() => {
@@ -26,8 +24,6 @@ export default function GetPokemon(params) {
         })
         setTypes(pokemonTypes)
         setStats(pokemonStats)
-        setCardclass('')
-        setLoadclass('d-none')
       }
     }
     getPokemon();
@@ -37,8 +33,6 @@ export default function GetPokemon(params) {
     pokemon,
     image,
     types,
-    cardClass,
-    loadClass,
     stats
   }
 }
