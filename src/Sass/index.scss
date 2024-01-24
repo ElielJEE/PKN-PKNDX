@@ -2,14 +2,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color:  #eff3ff ;
+  color:  #eff3ff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  background-color: #eff3ff;
+  background: url(../../public/img/background.gif) no-repeat;
+  background-size: cover;
 }
 
 @import './Util/fonts';
 @import './Pages/home';
+@import './Components/pagination';
 @import './Components/pokecard';
