@@ -1,10 +1,12 @@
 import { GetPokemon } from "../services/index";
 import loadingPokeball from "../../../public/img/LoadingPokeballWhite.gif";
+import useSound from "use-sound";
 
 export default function PokeCard(params) {
-  const { pokemon, image, types, stats } = GetPokemon(
-    params.pokeData.url
-  );
+  const { pokemon, image, types, stats } = GetPokemon(params.pokeData.url);
+  const sweepEffect = "../../../public/Sounds/cardEffect.wav";
+
+  const [play] = useSound(sweepEffect);
 
   const colors = {
     grass: "#d2f2c2",
@@ -28,8 +30,14 @@ export default function PokeCard(params) {
   };
 
   return (
-    <div className="pokecard-container float">
-      {!pokemon || pokemon.length === 0 && !image || image.length === 0 && !types || types.length === 0 && !stats || stats.length === 0 ? (
+    <div
+      className="pokecard-container float"
+      onMouseEnter={() => play()}
+    >
+      {!pokemon ||
+      (pokemon.length === 0 && !types) ||
+      (types.length === 0 && !stats) ||
+      stats.length === 0 ? (
         <div className="loading-pokecard">
           <img src={loadingPokeball} alt="" className="loading-img" />
         </div>

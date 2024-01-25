@@ -1,5 +1,6 @@
 import { usePagination } from "../hooks/index";
 import PropTypes from 'prop-types';
+import useSound from "use-sound";
 
 export default function Pagination({
   onPageChange,
@@ -8,6 +9,9 @@ export default function Pagination({
   currentPage,
   pageSize
 }) {
+
+  const pikachuEffect = '../../../public/Sounds/PokemonPikachu.mp3'
+  const [playActive] = useSound(pikachuEffect)
 
   const { paginationRange, DOTS } = usePagination({
     currentPage,
@@ -37,7 +41,7 @@ export default function Pagination({
         }
         onClick={onPrevious}
       >
-        <div className="arrow left" />
+        <div className="arrow left" onClick={playActive}/>
         {currentPage === 1 && (<span className="arrow-text__left">No more!</span>)}
       </li>
       {paginationRange.map((pageNumber, index) => {
@@ -70,7 +74,7 @@ export default function Pagination({
         }
         onClick={onNext}
       >
-        <div className="arrow right" />
+        <div className="arrow right" onClick={playActive}/>
         {currentPage === lastPage && (<span className="arrow-text__right">No more!</span>)}
       </li>
     </ul>

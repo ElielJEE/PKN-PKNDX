@@ -7,8 +7,18 @@
 }
 
 body {
-  background: url(../../public/img/background.gif) no-repeat;
-  background-size: cover;
+  animation: backgroundChange 380s infinite alternate-reverse ease-in-out;
+  background-size:  cover;
+}
+
+@keyframes backgroundChange {
+  0% {
+    background: url(../../public/img/background.gif) no-repeat;
+    background-size: cover;
+  } 100% {
+    background: url(../../public/img/bugBackground.gif) no-repeat;
+    background-size: cover;
+  }
 }
 
 @import './Util/fonts';

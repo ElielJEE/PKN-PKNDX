@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { GetPokemons } from "../Components/services/index";
 import { PokeCard } from "../Components/atoms/index";
 import { Pagination } from "../Components/molecules";
@@ -14,6 +14,9 @@ export default function Home() {
     const lastPageIndex = firstPageIndex + pageSize;
     return pokemonList.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, pageSize, pokemonList]);
+
+  const audioRef = useRef();
+  audioRef.volume = 0.5;
 
   const buscar = async (e) => {
     if (e.keyCode === 13) {
@@ -36,6 +39,12 @@ export default function Home() {
 
   return (
     <div className="home-container">
+      <audio
+        src="public\Sounds\PokemonMusicB.mp3"
+        autoPlay
+        loop
+        ref={audioRef}
+      ></audio>
       <header className="home-header">
         <h1 className="page-title">PokeLook</h1>
         <div className="searcher-container">
