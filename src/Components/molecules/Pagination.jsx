@@ -11,7 +11,7 @@ export default function Pagination({
 }) {
 
   const pikachuEffect = '../../../public/Sounds/PokemonPikachu.mp3'
-  const [playActive] = useSound(pikachuEffect)
+  const [playActive] = useSound(pikachuEffect, {volume: 0.3})
 
   const { paginationRange, DOTS } = usePagination({
     currentPage,

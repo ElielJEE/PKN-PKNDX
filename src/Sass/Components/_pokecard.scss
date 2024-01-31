@@ -4,7 +4,7 @@
   height: 300px;
   border-radius: 20px;
   box-shadow: 0 3px 15px #00000088;
-  transition: transform .4s;
+  transition: transform 1s;
   transform-style: preserve-3d;
   position: relative;
   z-index: 10;
@@ -50,6 +50,9 @@
 
   & .pokecard-img {
     width: 70%;
+  }
+  
+  .pokecard-img__anim {
     animation: jumpingImg .2s infinite alternate-reverse ease-in-out;
   }
 

@@ -1,12 +1,8 @@
-import { GetPokemon } from "../services/index";
+import { GetPokemon } from "../services";
 import loadingPokeball from "../../../public/img/LoadingPokeballWhite.gif";
-import useSound from "use-sound";
 
 export default function PokeCard(params) {
   const { pokemon, image, types, stats } = GetPokemon(params.pokeData.url);
-  const sweepEffect = "../../../public/Sounds/cardEffect.wav";
-
-  const [play] = useSound(sweepEffect);
 
   const colors = {
     grass: "#d2f2c2",
@@ -30,10 +26,7 @@ export default function PokeCard(params) {
   };
 
   return (
-    <div
-      className="pokecard-container float"
-      onMouseEnter={() => play()}
-    >
+    <div className="pokecard-container float">
       {!pokemon ||
       (pokemon.length === 0 && !types) ||
       (types.length === 0 && !stats) ||
@@ -55,7 +48,13 @@ export default function PokeCard(params) {
                 : { background: colors[types[0]] }
             }
           >
-            <img src={image} alt="pokemon" className="pokecard-img" />
+            <img
+              src={image}
+              alt="pokemon"
+              className={
+                params.onPress === true ? "pokecard-img pokecard-img__anim" : " pokecard-img"
+              }
+            />
             <div className="pokecard-circle"></div>
             <div className="pokecard-body">
               <h5 className="pokecard-pokemon__number">#{pokemon.id}</h5>

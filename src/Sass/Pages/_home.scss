@@ -60,3 +60,25 @@
   justify-items: center;
   padding: 0 3rem;
 }
+
+.playbutton-container {
+  position: absolute;
+  width: max-content;
+  right: 25px;
+  top: 20px;
+
+  .playbutton {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: monospace;
+    font-size: x-large;
+    font-weight: bolder;
+    text-shadow: 3px 3px 1px black;
+    cursor: pointer;
+
+    &:hover {
+      color: yellow;
+    }
+  }
+}

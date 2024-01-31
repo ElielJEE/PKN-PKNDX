@@ -1,22 +1,19 @@
-import { useState, useMemo, useRef } from "react";
-import { GetPokemons } from "../Components/services/index";
-import { PokeCard } from "../Components/atoms/index";
+import { useState, useMemo } from "react";
+import { GetPokemons } from "../Components/services";
+import { PokeCard } from "../Components/atoms";
 import { Pagination } from "../Components/molecules";
+import { usePlaying } from "../Components/hooks";
+import useSound from "use-sound";
+import pokemonMusic from "../../public/Sounds/pokemonMusicB.mp3";
 
 export default function Home() {
   const { pokemons, filtro, setFiltro, pokemonList, setPokemonList } =
     GetPokemons();
   const [currentPage, setCurrentPage] = useState(1);
   let pageSize = 12;
+  const { onPress, togglePlaying } = usePlaying();
 
-  const currentPokemonData = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * pageSize;
-    const lastPageIndex = firstPageIndex + pageSize;
-    return pokemonList.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, pageSize, pokemonList]);
-
-  const audioRef = useRef();
-  audioRef.volume = 0.5;
+  const [play, { stop }] = useSound(pokemonMusic, { volume: 0.2, loop: true });
 
   const buscar = async (e) => {
     if (e.keyCode === 13) {
@@ -37,14 +34,26 @@ export default function Home() {
     }
   };
 
+  const currentPokemonData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * pageSize;
+    const lastPageIndex = firstPageIndex + pageSize;
+    return pokemonList.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, pageSize, pokemonList]);
+
   return (
     <div className="home-container">
-      <audio
-        src="public\Sounds\PokemonMusicB.mp3"
-        autoPlay
-        loop
-        ref={audioRef}
-      ></audio>
+      <div className="playbutton-container">
+        <button
+          className="playbutton"
+          type="checkbox"
+          onClick={() => togglePlaying()}
+          onMouseUp={() => {
+            onPress ? stop() : play();
+          }}
+        >
+          Play Music!
+        </button>
+      </div>
       <header className="home-header">
         <h1 className="page-title">PokeLook</h1>
         <div className="searcher-container">
@@ -65,7 +74,7 @@ export default function Home() {
       </header>
       <div className="pokemons-container">
         {currentPokemonData.map((pokeData, i) => (
-          <PokeCard pokeData={pokeData} key={i} />
+          <PokeCard pokeData={pokeData} key={i} onPress={onPress}/>
         ))}
       </div>
       <div className="pagination-container">
