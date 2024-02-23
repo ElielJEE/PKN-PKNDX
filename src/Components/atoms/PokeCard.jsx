@@ -1,4 +1,5 @@
 import { GetPokemon } from "../services";
+import { Link } from "react-router-dom";
 import loadingPokeball from "../../../public/img/LoadingPokeballWhite.gif";
 
 export default function PokeCard(params) {
@@ -67,6 +68,7 @@ export default function PokeCard(params) {
             </div>
           </div>
           <div className="pokecard-back">
+            <Link to={`/pokemon/${pokemon.name}`} className="pokecard-details__goto"></Link>
             <div className="pokecard-stats__name">HP: {stats[0]}</div>
             <div
               className="pokecard-stats__bar"
@@ -116,7 +118,7 @@ export default function PokeCard(params) {
                 }%, ${colors[types[0]]}71 ${stats[4]}%)`,
               }}
             ></div>
-            <div className="pokecard-stats__name">Speen: {stats[5]}</div>
+            <div className="pokecard-stats__name">Speed: {stats[5]}</div>
             <div
               className="pokecard-stats__bar"
               style={{

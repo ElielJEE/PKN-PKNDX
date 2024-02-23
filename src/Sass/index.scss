@@ -21,7 +21,10 @@ body {
   }
 }
 
+@import './Mixins/stats-bar';
+@import './Util/global-styles';
 @import './Util/fonts';
 @import './Pages/home';
+@import './Pages/details';
 @import './Components/pagination';
 @import './Components/pokecard';

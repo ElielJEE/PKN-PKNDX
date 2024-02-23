@@ -1,6 +1,8 @@
 import { usePagination } from "../hooks/index";
 import PropTypes from 'prop-types';
+import { useEffect } from "react";
 import useSound from "use-sound";
+import { useNavigate } from "react-router-dom";
 
 export default function Pagination({
   onPageChange,
@@ -19,20 +21,31 @@ export default function Pagination({
     siblingCount,
     pageSize,
   });
+  console.log(currentPage)
+  let navigate = useNavigate();
 
+  useEffect(() => {
+    if (currentPage > 1) {
+      navigate(`/${currentPage}`)
+    } else {
+      navigate(`/`)
+    }
+  }, [currentPage, navigate])
+  
   if (currentPage === 0 || paginationRange.length < 2) {
     return null;
   }
-
+  
   const onNext = () => {
     onPageChange(currentPage + 1);
   };
-
+  
   const onPrevious = () => {
     onPageChange(currentPage - 1);
   };
-
+  
   let lastPage = paginationRange[paginationRange.length - 1];
+
   return (
     <ul className="pagination-container">
       <li

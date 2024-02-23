@@ -5,7 +5,7 @@ export default function GetPokemons() {
   const [pokemonList, setPokemonList] = useState([]);
   const [filtro, setFiltro] = useState([]);
   const [offset, setOffset] = useState(0);
-  const [limit, setLimit] = useState(1025);
+  const [limit, setLimit] = useState(1008);
 
   useEffect(() => {
     const getPokemons = async (o) => {

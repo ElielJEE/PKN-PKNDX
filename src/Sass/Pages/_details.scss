@@ -1,0 +1,176 @@
+.details-container {
+  background-color: #3f4141;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  margin: 30px auto;
+  width: 900px;
+
+  .pokemon-details__header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 2rem;
+    gap: 8px;
+  }
+
+  .pokemon-details__left,
+  .pokemon-details__right {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  
+  & .pokemon-details__left {
+    & .detail-left__pokemon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+
+      & .hear-pokemon__btn {
+        position: absolute;
+        bottom: 4rem;
+        right: 6.8rem;
+        background-color: transparent;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        border-radius: 50%;
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        box-shadow: 3px 3px 5px 0px rgb(32, 32, 32);
+
+        & i:hover {
+          color: yellow;
+        }
+      }
+
+      & .detail-left__image-container {
+        width: 70%;
+
+        & .detail-left__image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      & .detail-left__types {
+        display: flex;
+        gap: 10px;
+
+        & .detail-types {
+          display: flex;
+          border-radius: 10px;
+          color: black;
+          font-weight: bold;
+          font-size: 1rem;
+          width: 85px;
+          height: 26px;
+          justify-content: center;
+        }
+      }
+    }
+
+    & .details-left__stats-container {
+      padding: 0 1rem;
+      @include stats-bar(100%, 10px);
+    }
+  }
+
+  & .pokemon-details__right {
+    padding-right: 10px;
+    gap: 16px;
+
+    & .detail-bio__container {
+      & .detail-bio {
+        text-align: justify;
+      }
+    }
+
+    & .detail-habitat__container {
+      display: flex;
+      gap: 7px;
+    }
+
+    & .detail-info__container {
+      background-color: #4f4f4f;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      border-radius: 10px;
+      padding: 10px 16px;
+
+      & .detail-info__left,
+      .detail-info__right {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      & .detail-info__left {
+        & .detail-info__height,
+        .detail-info__weight {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+      }
+
+      & .detail-info__right {
+        & .detail-abilities__container {
+          display: flex;
+          flex-direction: column;
+
+          & .detail-abilities__list {
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+          }
+        }
+      }
+    }
+
+    & .detail-damage__container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      & .detail-damage__againts,
+      .detail-damage__advantage {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+
+        & .detail-damage__againts-list,
+        .detail-damage__advantage-list {
+          display: flex;
+          flex-wrap: wrap;
+          list-style: none;
+          gap: 8px;
+
+          & .detail-damage__advantage-item,
+          .detail-damage__againts-item {
+            color: black;
+            font-weight: bold;
+            border-radius: 10px;
+            width: 85px;
+            height: 26px;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    & .detail-evolution__container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+}

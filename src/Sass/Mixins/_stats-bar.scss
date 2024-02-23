@@ -1,0 +1,12 @@
+@mixin stats-bar($width, $margin) {
+  .pokecard-stats__name {
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
+  
+  .pokecard-stats__bar {
+    width: $width;
+    height: 8px;
+    margin-bottom: $margin;
+  }
+}

@@ -103,21 +103,17 @@
   transform: rotateY(0.5turn);
   background-color: #3f4141;
   border: none;
-  
 
-  & .pokecard-stats__name {
-    font-weight: bold;
-    font-size: 0.8rem;
-  }
-
-  & .pokecard-stats__bar {
-    width: 70%;
-    height: 8px;
-    margin-bottom: 15px;
-  }
+  @include stats-bar(70%, 15px);
 
   & .pokecard-back__details {
     font-size: 0.8rem;
+  }
+
+  & .pokecard-details__goto {
+    position: absolute;
+    width: 100%;
+    height: 100%;
   }
 }
 
