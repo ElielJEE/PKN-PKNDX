@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 export default function GetPokemons() {
+  const { search } = useParams();
   const [pokemons, setPokemons] = useState([]);
   const [pokemonList, setPokemonList] = useState([]);
-  const [filtro, setFiltro] = useState([]);
+  const [filtro, setFiltro] = useState(search === undefined ? "" : search);
   const [offset, setOffset] = useState(0);
   const [limit, setLimit] = useState(1008);
 
@@ -27,6 +29,6 @@ export default function GetPokemons() {
     filtro,
     setFiltro,
     pokemonList,
-    setPokemonList
+    setPokemonList,
   };
 }

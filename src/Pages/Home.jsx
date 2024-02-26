@@ -3,18 +3,18 @@ import { GetPokemons } from "../Components/services";
 import { PokeCard } from "../Components/atoms";
 import { Pagination } from "../Components/molecules";
 import { usePlaying } from "../Components/hooks";
-import useSound from "use-sound";
 import pokemonMusic from "../../public/Sounds/pokemonMusicB.mp3";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function Home() {
-  const { page } = useParams();
+  const { search, page } = useParams();
   const { pokemons, filtro, setFiltro, pokemonList, setPokemonList } =
     GetPokemons();
-  const [currentPageHome, setCurrentPageHome] = useState(page === undefined ? 1 : +page);
+  const [currentPageHome, setCurrentPageHome] = useState(
+    page === undefined ? 1 : +page
+  );
   let pageSize = 12;
-  const { onPress, togglePlaying } = usePlaying();
-  const [play, { stop }] = useSound(pokemonMusic, { volume: 0.2, loop: true });
+  const { handlePlay, audioRef, onPress, togglePlaying } = usePlaying();
 
   const buscar = async (e) => {
     if (e.keyCode === 13) {
@@ -36,6 +36,23 @@ export default function Home() {
     }
   };
 
+  useEffect(() => {
+    if (search !== undefined) {
+      setPokemonList([]);
+      if (!isNaN(search)) {
+        const num = Number(search);
+        setPokemonList(pokemons.filter((p) => p.url.includes(num.toString())));
+      } else {
+        setPokemonList(pokemons.filter((p) => p.name.includes(search)));
+      }
+    } else if (search === "") {
+      setPokemonList([]);
+      setPokemonList(pokemons);
+    }
+  }, [pokemons, setPokemonList]);
+
+  console.log(filtro);
+
   const currentPokemonData = useMemo(() => {
     const firstPageIndex = (currentPageHome - 1) * pageSize;
     const lastPageIndex = firstPageIndex + pageSize;
@@ -45,13 +62,11 @@ export default function Home() {
   return (
     <div className="home-container">
       <div className="playbutton-container">
+        <audio src={pokemonMusic} ref={audioRef} loop />
         <button
           className="playbutton"
-          type="checkbox"
-          onClick={() => togglePlaying()}
-          onMouseUp={() => {
-            onPress ? stop() : play();
-          }}
+          onClick={handlePlay}
+          onMouseDown={togglePlaying}
         >
           Play Music!
         </button>
@@ -85,6 +100,7 @@ export default function Home() {
           totalCount={pokemonList.length}
           pageSize={pageSize}
           onPageChange={(page) => setCurrentPageHome(page)}
+          urlFilter={filtro}
         />
       </div>
     </div>

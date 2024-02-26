@@ -1,19 +1,19 @@
-import { usePagination } from "../hooks/index";
-import PropTypes from 'prop-types';
+import { usePagination, useSearch } from "../hooks/index";
+import PropTypes from "prop-types";
 import { useEffect } from "react";
-import useSound from "use-sound";
 import { useNavigate } from "react-router-dom";
+import { usePlaying } from "../hooks";
 
 export default function Pagination({
   onPageChange,
   totalCount,
   siblingCount = 1,
   currentPage,
-  pageSize
+  pageSize,
+  urlFilter
 }) {
-
-  const pikachuEffect = '../../../public/Sounds/PokemonPikachu.mp3'
-  const [playActive] = useSound(pikachuEffect, {volume: 0.3})
+  const pikachuEffect = "../../../public/Sounds/PokemonPikachu.mp3";
+  const { audioRef, handlePlay } = usePlaying();
 
   const { paginationRange, DOTS } = usePagination({
     currentPage,
@@ -21,41 +21,51 @@ export default function Pagination({
     siblingCount,
     pageSize,
   });
-  console.log(currentPage)
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (currentPage > 1) {
-      navigate(`/${currentPage}`)
+      if (urlFilter !== "") {
+        navigate(`/${urlFilter}/${currentPage}`);
+      } else {
+        navigate(`/${currentPage}`);
+      }
+    } else if (urlFilter !== "") {
+      navigate(`/${urlFilter}/${currentPage}`);
     } else {
-      navigate(`/`)
+      navigate(`/`);
     }
-  }, [currentPage, navigate])
-  
+  }, [navigate, currentPage, urlFilter]);
+
   if (currentPage === 0 || paginationRange.length < 2) {
     return null;
   }
-  
+
   const onNext = () => {
     onPageChange(currentPage + 1);
   };
-  
+
   const onPrevious = () => {
     onPageChange(currentPage - 1);
   };
-  
+
   let lastPage = paginationRange[paginationRange.length - 1];
 
   return (
     <ul className="pagination-container">
       <li
         className={
-          currentPage === 1 ? "pagination-item__arrow disabled" : "pagination-item__arrow"
+          currentPage === 1
+            ? "pagination-item__arrow disabled"
+            : "pagination-item__arrow"
         }
         onClick={onPrevious}
       >
-        <div className="arrow left" onClick={playActive}/>
-        {currentPage === 1 && (<span className="arrow-text__left">No more!</span>)}
+        <audio src={pikachuEffect} ref={audioRef} />
+        <div className="arrow left" onClick={handlePlay} />
+        {currentPage === 1 && (
+          <span className="arrow-text__left">No more!</span>
+        )}
       </li>
       {paginationRange.map((pageNumber, index) => {
         if (pageNumber === DOTS) {
@@ -87,8 +97,11 @@ export default function Pagination({
         }
         onClick={onNext}
       >
-        <div className="arrow right" onClick={playActive}/>
-        {currentPage === lastPage && (<span className="arrow-text__right">No more!</span>)}
+        <audio src={pikachuEffect} ref={audioRef} />
+        <div className="arrow right" onClick={handlePlay} />
+        {currentPage === lastPage && (
+          <span className="arrow-text__right">No more!</span>
+        )}
       </li>
     </ul>
   );
@@ -100,4 +113,5 @@ Pagination.propTypes = {
   siblingCount: PropTypes.number,
   currentPage: PropTypes.number.isRequired,
   pageSize: PropTypes.number.isRequired,
+  urlFilter: PropTypes.string.isRequired,
 };
