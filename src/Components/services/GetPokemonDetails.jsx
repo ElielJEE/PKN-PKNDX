@@ -49,13 +49,15 @@ export default function GetPokemonDetails(params) {
         const response = await fetch(url);
         if (response.ok) {
           const data = await response.json();
-          setWeakness(data.damage_relations.double_damage_from);
-          setAdvantage(data.damage_relations.double_damage_to);
+          setWeakness(data.damage_relations.double_damage_from.length === 0 ? "Unkwon" : data.damage_relations.double_damage_from);
+          setAdvantage(data.damage_relations.double_damage_to.length === 0 ? "Unkwon" : data.damage_relations.double_damage_to);
         }
       }
     };
     getPokemonDetailsTypes();
   }, [typesUrl]);
+
+  console.log(weakness, advantage)
 
   useEffect(() => {
     const getPokemonDetailsEvolution = async () => {

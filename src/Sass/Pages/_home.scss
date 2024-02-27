@@ -15,6 +15,10 @@
   & .page-title {
     font-family: $title-font;
     font-size: 4rem;
+
+    @media screen and (max-width: 460px) {
+      font-size: 2rem;
+    }
   }
 
   & .searcher-container {
@@ -43,6 +47,10 @@
       width: 400px;
       background-color:#eff3ff;
       color: #1a1b1b ;
+
+      @media screen and (max-width: 460px) {
+        width: 350px;
+      }
     }
   }
 }
@@ -59,13 +67,19 @@
   gap: 30px;
   justify-items: center;
   padding: 0 3rem;
+
+  @media screen and (max-width: 495px) {
+    gap: 10px;
+    padding: 0 5px;
+  }
 }
 
 .playbutton-container {
-  position: absolute;
+  position: fixed;
   width: max-content;
-  right: 25px;
+  right: 20px;
   top: 20px;
+  z-index: 20;
 
   .playbutton {
     background-color: transparent;

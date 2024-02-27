@@ -14,7 +14,7 @@ export default function Home() {
     page === undefined ? 1 : +page
   );
   let pageSize = 12;
-  const { handlePlay, audioRef, onPress, togglePlaying } = usePlaying();
+  const { handlePlay, handleStop, audioRef, onPress } = usePlaying();
 
   const buscar = async (e) => {
     if (e.keyCode === 13) {
@@ -27,7 +27,8 @@ export default function Home() {
             pokemons.filter((p) => p.url.includes(num.toString()))
           );
         } else {
-          setPokemonList(pokemons.filter((p) => p.name.includes(filtro)));
+          const filter = filtro.toLowerCase();
+          setPokemonList(pokemons.filter((p) => p.name.includes(filter)));
         }
       } else if (filtro.trim() == "") {
         setPokemonList([]);
@@ -43,7 +44,8 @@ export default function Home() {
         const num = Number(search);
         setPokemonList(pokemons.filter((p) => p.url.includes(num.toString())));
       } else {
-        setPokemonList(pokemons.filter((p) => p.name.includes(search)));
+        const filter = search.toLowerCase();
+        setPokemonList(pokemons.filter((p) => p.name.includes(filter)));
       }
     } else if (search === "") {
       setPokemonList([]);
@@ -63,13 +65,24 @@ export default function Home() {
     <div className="home-container">
       <div className="playbutton-container">
         <audio src={pokemonMusic} ref={audioRef} loop />
-        <button
-          className="playbutton"
-          onClick={handlePlay}
-          onMouseDown={togglePlaying}
-        >
-          Play Music!
-        </button>
+        {
+          !onPress ? (
+            <button
+              className="playbutton"
+              onClick={handlePlay}
+            >
+              Play Music!
+            </button>
+          ) : (
+            <button
+              className="playbutton"
+              onClick={handleStop}
+            >
+              Stop Music!
+            </button>
+          )
+        }
+
       </div>
       <header className="home-header">
         <h1 className="page-title">PokeLook</h1>
