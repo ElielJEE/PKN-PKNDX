@@ -12,7 +12,7 @@ export default function Pagination({
   pageSize,
   urlFilter
 }) {
-  const pikachuEffect = "../../../public/Sounds/PokemonPikachu.mp3";
+  const pikachuEffect = "../../../public/Sounds/pokemon-pika.mp3";
   const { audioRef, handlePlay } = usePlaying();
 
   const { paginationRange, DOTS } = usePagination({

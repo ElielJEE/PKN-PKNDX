@@ -3,7 +3,7 @@ import { GetPokemons } from "../Components/services";
 import { PokeCard } from "../Components/atoms";
 import { Pagination } from "../Components/molecules";
 import { usePlaying } from "../Components/hooks";
-import pokemonMusic from "../../public/Sounds/PokemonMusicB.mp3";
+import pokemonMusic from "../../public/Sounds/pokemon-bg-music.mp3";
 import { useParams } from "react-router-dom";
 
 export default function Home() {
