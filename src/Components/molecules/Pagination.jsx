@@ -1,8 +1,9 @@
-import { usePagination, useSearch } from "../hooks/index";
+import { usePagination } from "../hooks/index";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePlaying } from "../hooks";
+import pikachuEffect from "/Sounds/pokemon-pika.mp3"
 
 export default function Pagination({
   onPageChange,
@@ -12,7 +13,6 @@ export default function Pagination({
   pageSize,
   urlFilter
 }) {
-  const pikachuEffect = "../../../public/Sounds/pokemon-pika.mp3";
   const { audioRef, handlePlay } = usePlaying();
 
   const { paginationRange, DOTS } = usePagination({

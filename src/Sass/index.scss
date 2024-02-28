@@ -13,10 +13,10 @@ body {
 
 @keyframes backgroundChange {
   0% {
-    background: url(../../public/img/background.gif) no-repeat;
+    background: url(/img/background.gif) no-repeat;
     background-size: cover;
   } 100% {
-    background: url(../../public/img/bugBackground.gif) no-repeat;
+    background: url(/img/bugBackground.gif) no-repeat;
     background-size: cover;
   }
 }

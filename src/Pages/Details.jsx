@@ -21,7 +21,6 @@ export default function Details() {
     weakness,
     advantage,
     evolvesTo,
-    basePokemon,
   } = GetPokemonDetails(id);
   const { audioRef, handlePlay } = usePlaying();
 
