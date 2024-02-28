@@ -12,6 +12,10 @@
   gap: 16px;
   padding: 1rem 0 2rem 0;
 
+  @media screen and (max-width: 460px) {
+    padding: 1rem 0 0.5rem 0;
+  }
+
   & .page-title {
     font-family: $title-font;
     font-size: 4rem;
@@ -26,15 +30,19 @@
     box-shadow: 0 3px 15px #00000088;
     border-radius: 5px;
 
+    @media screen and (max-width: 460px) {
+      width: 90%;
+    }
+
     & .icon-searcher__container {
       display: flex;
-      background-color: #db3b3b ;
+      background-color: #db3b3b;
       padding: 10px;
       border-end-start-radius: 5px;
       border-start-start-radius: 5px;
 
       & i {
-        color:#eff3ff;
+        color: #eff3ff;
       }
     }
 
@@ -45,32 +53,34 @@
       border: none;
       padding: 0 5px;
       width: 400px;
-      background-color:#eff3ff;
-      color: #1a1b1b ;
-
-      @media screen and (max-width: 460px) {
-        width: 350px;
-      }
+      background-color: #eff3ff;
+      color: #1a1b1b;
     }
   }
 }
 
 .pokemons-container {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(
-      185px,
-      1fr
-    )
-  );
+  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
   gap: 30px;
   justify-items: center;
   padding: 0 3rem;
 
-  @media screen and (max-width: 495px) {
+  @media screen and (max-width: 710px) {
     gap: 10px;
     padding: 0 5px;
+  }
+
+  @media screen and (max-width: 585px) {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  @media screen and (max-width: 480px) {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  @media screen and (max-width: 390px) {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
   }
 }
 

@@ -13,6 +13,27 @@
     transform: rotateY(0.5turn);
     cursor: pointer;
   }
+
+  @media screen and (max-width: 585px) {
+    width: 100%;
+    height: 300px;
+  }
+
+  @media screen and (max-width: 540px) {
+    height: 250px;
+  }
+
+  @media screen and (max-width: 440px) {
+    height: 220px;
+  }
+
+  @media screen and (max-width: 420px) {
+    height: 200px;
+  }
+
+  @media screen and (max-width: 330px) {
+    height: 155px;
+  }
 }
 
 .pokecard-front {
@@ -34,6 +55,10 @@
   right: 0;
   bottom: 0;
   backface-visibility: hidden;
+
+  @media screen and (max-width: 420px) {
+    border-radius: 12px;
+  }
   
   & .loading-img {
     width: 70%;
@@ -42,7 +67,7 @@
   & .pokecard-circle {
     position: absolute;
     z-index: -1;
-    padding: 65px;
+    padding: 37%;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     top: 6%;
@@ -70,6 +95,10 @@
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    
+    @media screen and (max-width: 540px) {
+      margin-top: 3px;
+    }
 
     & .pokecard-pokemon__number {
       border-radius: 20px;
@@ -78,6 +107,15 @@
       background-color: #00000033;
       color: black;
       font-weight: 500;
+      
+      @media screen and (max-width: 540px) {
+        font-size: .7rem;
+      }
+      
+      @media screen and (max-width: 330px) {
+        font-size: .5rem;
+        padding: 2px 7px;
+      }
     }
 
     & .pokecard-pokemon__name {
@@ -88,6 +126,13 @@
     .pokecard-pokemon__types {
       color: black;
       font-size: 1.25rem;
+      @media screen and (max-width: 540px) {
+        font-size: .8rem;
+      }
+
+      @media screen and (max-width: 330px) {
+        font-size: .6rem;
+      }
     }
 
     & .pokecard-pokemon__name,
@@ -95,6 +140,10 @@
     .pokecard-pokemon__types {
       line-height: 1.2;
       margin-bottom: 0.5rem;
+
+      @media screen and (max-width: 540px) {
+        margin-bottom: 0.3rem;
+      }
     }
   }
 }
@@ -105,9 +154,25 @@
   border: none;
 
   @include stats-bar(70%, 15px);
+  
+  @media screen and (max-width: 540px) {
+    @include stats-bar(80%, 6px);
+  }
+
+  @media screen and (max-width: 540px) {
+    @include stats-bar(75%, 6px);
+  }
 
   & .pokecard-back__details {
     font-size: 0.8rem;
+    
+    @media screen and (max-width: 540px) {
+      font-size: .5rem;
+    }
+
+    @media screen and (max-width: 330px) {
+      font-size: .4rem;
+    }
   }
 
   & .pokecard-details__goto {

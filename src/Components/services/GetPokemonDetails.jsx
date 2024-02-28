@@ -45,19 +45,31 @@ export default function GetPokemonDetails(params) {
   useEffect(() => {
     const getPokemonDetailsTypes = async () => {
       if (typesUrl) {
-        const url = typesUrl;
-        const response = await fetch(url);
-        if (response.ok) {
-          const data = await response.json();
-          setWeakness(data.damage_relations.double_damage_from.length === 0 ? "Unkwon" : data.damage_relations.double_damage_from);
-          setAdvantage(data.damage_relations.double_damage_to.length === 0 ? "Unkwon" : data.damage_relations.double_damage_to);
+        try {
+          const url = typesUrl;
+          const response = await fetch(url);
+          if (response.ok) {
+            const data = await response.json();
+            setWeakness(
+              data.damage_relations.double_damage_from.length === 0
+                ? "Unkwon"
+                : data.damage_relations.double_damage_from
+            );
+            setAdvantage(
+              data.damage_relations.double_damage_to.length === 0
+                ? "Unkwon"
+                : data.damage_relations.double_damage_to
+            );
+          } else {
+            console.error("Error fetching data:", response.status)
+          }
+        } catch (error) {
+          console.error("An error ocurred:", error.message)
         }
       }
     };
     getPokemonDetailsTypes();
   }, [typesUrl]);
-
-  console.log(weakness, advantage)
 
   useEffect(() => {
     const getPokemonDetailsEvolution = async () => {
@@ -73,8 +85,8 @@ export default function GetPokemonDetails(params) {
             evolvesToData.push(item.species.name);
             if (item.evolves_to != []) {
               item.evolves_to.map((item) => {
-                evolvesToData.push(item.species.name)
-              })
+                evolvesToData.push(item.species.name);
+              });
             }
           });
 

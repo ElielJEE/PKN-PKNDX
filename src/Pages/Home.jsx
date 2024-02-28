@@ -53,8 +53,6 @@ export default function Home() {
     }
   }, [pokemons, setPokemonList]);
 
-  console.log(filtro);
-
   const currentPokemonData = useMemo(() => {
     const firstPageIndex = (currentPageHome - 1) * pageSize;
     const lastPageIndex = firstPageIndex + pageSize;
