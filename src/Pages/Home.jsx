@@ -102,7 +102,7 @@ export default function Home() {
       </header>
       <div className="pokemons-container">
         {currentPokemonData.map((pokeData, i) => (
-          <PokeCard pokeData={pokeData} key={i} onPress={onPress} />
+          <PokeCard pokeData={pokeData} key={i} onPress={onPress} classname={currentPokemonData.length === 2 ? "two-cards" : "" || currentPokemonData.length === 1 ? "one-card" : ""}/>
         ))}
       </div>
       <div className="pagination-container">

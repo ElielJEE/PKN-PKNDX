@@ -1,4 +1,6 @@
-.pokecard-container {
+.pokecard-container,
+.two-cards,
+.one-card {
   background-color: #1a1b1b ;
   width: 185px;
   height: 300px;
@@ -13,7 +15,55 @@
     transform: rotateY(0.5turn);
     cursor: pointer;
   }
+}
 
+.one-card {
+  @media screen and (max-width: 585px) {
+    width: 32%;
+    height: 300px;
+  }
+
+  @media screen and (max-width: 540px) {
+    height: 250px;
+  }
+
+  @media screen and (max-width: 440px) {
+    height: 220px;
+  }
+
+  @media screen and (max-width: 420px) {
+    height: 200px;
+  }
+
+  @media screen and (max-width: 330px) {
+    height: 155px;
+  }
+}
+
+.two-one-card {
+  @media screen and (max-width: 585px) {
+    width: 65%;
+    height: 300px;
+  }
+
+  @media screen and (max-width: 540px) {
+    height: 250px;
+  }
+
+  @media screen and (max-width: 440px) {
+    height: 220px;
+  }
+
+  @media screen and (max-width: 420px) {
+    height: 200px;
+  }
+
+  @media screen and (max-width: 330px) {
+    height: 155px;
+  }
+}
+
+.pokecard-container {
   @media screen and (max-width: 585px) {
     width: 100%;
     height: 300px;

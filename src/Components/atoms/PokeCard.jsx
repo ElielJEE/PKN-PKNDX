@@ -4,6 +4,7 @@ import loadingPokeball from "../../../public/img/LoadingPokeballWhite.gif";
 
 export default function PokeCard(params) {
   const { pokemon, image, types, stats } = GetPokemon(params.pokeData.url);
+  const classes = `pokecard-container float ${params.classname}`
 
   const colors = {
     grass: "#d2f2c2",
@@ -27,7 +28,7 @@ export default function PokeCard(params) {
   };
 
   return (
-    <div className="pokecard-container float">
+    <div className={!params.classname ? "pokecard-container" : params.classname}>
       {!pokemon ||
       (pokemon.length === 0 && !types) ||
       (types.length === 0 && !stats) ||
