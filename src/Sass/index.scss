@@ -9,6 +9,13 @@
 body {
   animation: backgroundChange 380s infinite alternate-reverse ease-in-out;
   background-size:  cover;
+
+  @media screen and (max-width: 585px) {
+    background: url(/img/pokemon-background-movil.jpg) no-repeat;
+    background-size: contain;
+    background-repeat: repeat;
+    animation: none;
+  }
 }
 
 @keyframes backgroundChange {
