@@ -93,7 +93,7 @@
 
     & .details-left__stats-container {
       padding: 0 1rem;
-      @include stats-bar(100%, 10px);
+      @include stats-bar(100%, 10px, 0.8rem, 8px);
 
       @media screen and (max-width: 945px) {
         padding: 0;

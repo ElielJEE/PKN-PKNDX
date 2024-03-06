@@ -40,7 +40,7 @@
   }
 }
 
-.two-one-card {
+.two-cards {
   @media screen and (max-width: 585px) {
     width: 65%;
     height: 300px;
@@ -203,14 +203,14 @@
   background-color: #3f4141;
   border: none;
 
-  @include stats-bar(70%, 15px);
+  @include stats-bar(70%, 15px, 0.8rem, 8px);
   
   @media screen and (max-width: 540px) {
-    @include stats-bar(80%, 6px);
+    @include stats-bar(80%, 6px, .5rem, 5px);
   }
 
   @media screen and (max-width: 540px) {
-    @include stats-bar(75%, 6px);
+    @include stats-bar(75%, 6px, .4rem, 5px);
   }
 
   & .pokecard-back__details {
