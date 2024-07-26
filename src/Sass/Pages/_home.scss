@@ -85,26 +85,3 @@
     grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
   }
 }
-
-.playbutton-container {
-  position: fixed;
-  width: max-content;
-  right: 20px;
-  top: 20px;
-  z-index: 20;
-
-  .playbutton {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    font-family: monospace;
-    font-size: x-large;
-    font-weight: bolder;
-    text-shadow: 3px 3px 1px black;
-    cursor: pointer;
-
-    &:hover {
-      color: yellow;
-    }
-  }
-}

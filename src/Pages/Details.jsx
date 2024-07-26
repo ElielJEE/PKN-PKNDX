@@ -22,7 +22,7 @@ export default function Details() {
     advantage,
     evolvesTo,
   } = GetPokemonDetails(id);
-  const { audioRef, handlePlay } = usePlaying();
+  const { audioEffectRef, handlePlayEffects } = usePlaying();
 
   const colors = {
     grass: "#d2f2c2",
@@ -91,8 +91,8 @@ export default function Details() {
                       </span>
                     ))}
                   </div>
-                  <audio src={cry} ref={audioRef} />
-                  <button className="hear-pokemon__btn" onClick={handlePlay}>
+                  <audio src={cry} ref={audioEffectRef} />
+                  <button className="hear-pokemon__btn" onClick={handlePlayEffects}>
                     <i className="fa-solid fa-circle-play"></i>
                   </button>
                 </div>
