@@ -13,7 +13,7 @@ export default function Pagination({
   pageSize,
   urlFilter
 }) {
-  const { audioRef, handlePlay } = usePlaying();
+  const { audioEffectRef, handlePlayEffects } = usePlaying();
 
   const { paginationRange, DOTS } = usePagination({
     currentPage,
@@ -61,8 +61,8 @@ export default function Pagination({
         }
         onClick={onPrevious}
       >
-        <audio src={pikachuEffect} ref={audioRef} />
-        <div className="arrow left" onClick={handlePlay} />
+        <audio src={pikachuEffect} ref={audioEffectRef} />
+        <div className="arrow left" onClick={handlePlayEffects} />
         {currentPage === 1 && (
           <span className="arrow-text__left">No more!</span>
         )}
@@ -97,8 +97,8 @@ export default function Pagination({
         }
         onClick={onNext}
       >
-        <audio src={pikachuEffect} ref={audioRef} />
-        <div className="arrow right" onClick={handlePlay} />
+        <audio src={pikachuEffect} ref={audioEffectRef} />
+        <div className="arrow right" onClick={handlePlayEffects} />
         {currentPage === lastPage && (
           <span className="arrow-text__right">No more!</span>
         )}
